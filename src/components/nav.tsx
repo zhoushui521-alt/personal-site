@@ -30,7 +30,7 @@ export default function Nav() {
                 href={link.href}
                 className={`text-sm transition-colors duration-200 ${
                   isActive
-                    ? "text-cyan"
+                    ? "text-accent"
                     : "text-text-secondary hover:text-text-primary"
                 }`}
               >

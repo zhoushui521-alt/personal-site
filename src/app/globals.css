@@ -1,26 +1,50 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #0f0f23;
-  --color-surface: #1a1a35;
-  --color-border: #2a2a45;
-  --color-text-primary: #F0EDE8;
-  --color-text-secondary: #9B9BB0;
-  --color-cyan: #7EC8E3;
-  --color-magenta: #F4845F;
-  --color-mint: #A8D8B9;
-  --color-gold: #E8B86D;
-  --color-blue: #6C8EE8;
+  --color-bg: #FAF9F6;
+  --color-surface: #FFFFFF;
+  --color-border: #EBEAE6;
+  --color-text-primary: #1A1A1C;
+  --color-text-secondary: #8E8E93;
+  --color-accent: #E8602A;
+  --color-blue: #3B6FF5;
+  --color-accent-soft: #F5F0EB;
+  --color-gold: #D4894A;
+  --color-magenta: #E8602A;
+  --color-cyan: #3B6FF5;
+  --color-mint: #4DAE8A;
 }
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
     "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
   background:
-    radial-gradient(ellipse 60% 50% at 50% 20%, rgba(232, 184, 109, 0.06) 0%, transparent 60%),
-    radial-gradient(ellipse 80% 60% at 50% 30%, #161630 0%, #0f0f23 60%, #0a0a18 100%);
+    radial-gradient(ellipse 80% 50% at 20% 10%, rgba(232, 96, 42, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 50% at 80% 70%, rgba(59, 111, 245, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 40% at 50% 50%, rgba(255, 255, 255, 1) 0%, transparent 70%),
+    #FAF9F6;
   background-attachment: fixed;
-  color: #F0EDE8;
+  color: #1A1A1C;
+}
+
+@keyframes float-blob-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -20px) scale(1.05); }
+  66% { transform: translate(-10px, 15px) scale(0.97); }
+}
+
+@keyframes float-blob-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-25px, -15px) scale(0.96); }
+  66% { transform: translate(20px, 10px) scale(1.04); }
+}
+
+@utility animate-float-1 {
+  animation: float-blob-1 20s ease-in-out infinite;
+}
+
+@utility animate-float-2 {
+  animation: float-blob-2 25s ease-in-out infinite;
 }
 
 @keyframes gradient-shift {

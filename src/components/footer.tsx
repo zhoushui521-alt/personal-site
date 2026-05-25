@@ -13,9 +13,9 @@ export default function Footer() {
             <a
               key={ch.label}
               href={ch.href}
-              className="text-sm text-text-secondary hover:text-cyan transition-colors duration-200"
+              className="text-sm text-text-secondary hover:text-accent transition-colors duration-200"
             >
-              <span className="mr-1.5 text-border">&gt;</span>
+              <span className="mr-1.5 text-text-secondary/30">&gt;</span>
               {ch.label}
             </a>
           ))}

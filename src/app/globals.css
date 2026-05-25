@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0f0f23;
+  --color-surface: #1a1a35;
+  --color-border: #2a2a45;
+  --color-text-primary: #F0EDE8;
+  --color-text-secondary: #9B9BB0;
+  --color-cyan: #7EC8E3;
+  --color-magenta: #F4845F;
+  --color-mint: #A8D8B9;
+  --color-gold: #E8B86D;
+  --color-blue: #6C8EE8;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 20%, rgba(232, 184, 109, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 60% at 50% 30%, #161630 0%, #0f0f23 60%, #0a0a18 100%);
+  background-attachment: fixed;
+  color: #F0EDE8;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@utility animate-gradient {
+  animation: gradient-shift 6s ease infinite;
+}

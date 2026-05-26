@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { projects } from "@/data/projects";
 import DossierCard from "@/components/projects/dossier-card";
+import ScrollReveal from "@/components/scroll-reveal";
+import { StaggerContainer, StaggerItem } from "@/components/stagger-children";
 
 export const metadata: Metadata = {
   title: "工程档案",
@@ -11,16 +13,20 @@ export const metadata: Metadata = {
 export default function ProjectsPage() {
   return (
     <div className="max-w-4xl mx-auto px-6 py-20">
-      <h2 className="text-2xl font-semibold tracking-tight">工程档案</h2>
-      <p className="mt-3 text-sm text-text-secondary">
-        每个项目都是一个可成长的工程资产，不是一次性 Demo。
-      </p>
+      <ScrollReveal>
+        <h2 className="text-2xl font-semibold tracking-tight">工程档案</h2>
+        <p className="mt-3 text-sm text-text-secondary">
+          每个项目都是一个可成长的工程资产，不是一次性 Demo。
+        </p>
+      </ScrollReveal>
 
-      <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <StaggerContainer className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
         {projects.map((p) => (
-          <DossierCard key={p.id} project={p} />
+          <StaggerItem key={p.id}>
+            <DossierCard project={p} />
+          </StaggerItem>
         ))}
-      </div>
+      </StaggerContainer>
     </div>
   );
 }

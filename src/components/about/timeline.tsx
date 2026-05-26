@@ -1,3 +1,7 @@
+"use client";
+
+import ScrollReveal from "@/components/scroll-reveal";
+
 const milestones = [
   {
     id: "enroll",
@@ -34,14 +38,16 @@ const milestones = [
 export default function Timeline() {
   return (
     <div className="mt-6 space-y-0">
-      {milestones.map((m) => (
-        <div key={m.id} className="relative pl-8 pb-8 last:pb-0">
-          <div className="absolute left-[7px] top-2 w-px h-full bg-border" />
-          <div className="absolute left-0 top-2 w-3.5 h-3.5 rounded-full border-2 border-accent/40 bg-bg animate-dot-pulse" />
-          <span className="text-xs text-accent font-mono">{m.year}</span>
-          <h4 className="mt-0.5 text-sm font-medium text-text-primary">{m.label}</h4>
-          <p className="mt-1 text-sm text-text-secondary">{m.desc}</p>
-        </div>
+      {milestones.map((m, i) => (
+        <ScrollReveal key={m.id} delay={i * 0.1} direction="left">
+          <div className="relative pl-8 pb-8 last:pb-0">
+            <div className="absolute left-[7px] top-2 w-px h-full bg-border" />
+            <div className="absolute left-0 top-2 w-3.5 h-3.5 rounded-full border-2 border-accent/40 bg-bg animate-dot-pulse" />
+            <span className="text-xs text-accent font-mono">{m.year}</span>
+            <h4 className="mt-0.5 text-sm font-medium text-text-primary">{m.label}</h4>
+            <p className="mt-1 text-sm text-text-secondary">{m.desc}</p>
+          </div>
+        </ScrollReveal>
       ))}
     </div>
   );

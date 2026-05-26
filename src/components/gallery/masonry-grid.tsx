@@ -1,6 +1,7 @@
 "use client";
 
 import { useTiltEffect } from "@/lib/use-tilt-effect";
+import { StaggerContainer, StaggerItem } from "@/components/stagger-children";
 
 const photos = [
   "10.png", "101.png", "102.png", "103.png",
@@ -63,10 +64,12 @@ function PhotoCard({
 
 export default function MasonryGrid({ onSelect }: Props) {
   return (
-    <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 items-start">
+    <StaggerContainer className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 items-start">
       {photos.map((p) => (
-        <PhotoCard key={p.id} photo={p} onSelect={onSelect} />
+        <StaggerItem key={p.id}>
+          <PhotoCard photo={p} onSelect={onSelect} />
+        </StaggerItem>
       ))}
-    </div>
+    </StaggerContainer>
   );
 }

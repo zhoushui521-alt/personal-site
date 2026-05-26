@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import SmoothScroll from "@/components/lenis";
 import Hero from "@/components/home/hero";
 import MasonryGrid from "@/components/gallery/masonry-grid";
 import Lightbox from "@/components/gallery/lightbox";
@@ -10,8 +9,7 @@ export default function Home() {
   const [selected, setSelected] = useState<string | null>(null);
 
   return (
-    <SmoothScroll>
-      <main>
+    <main>
         <Hero
           name="Daniel"
           role="Infrastructure × AI Engineer"
@@ -64,7 +62,6 @@ export default function Home() {
         {selected && (
           <Lightbox src={selected} onClose={() => setSelected(null)} />
         )}
-      </main>
-    </SmoothScroll>
+    </main>
   );
 }

@@ -5,7 +5,7 @@ import type { Project } from "@/data/projects";
 
 export default function DossierCard({ project }: { project: Project }) {
   const { ref, onMouseMove, onMouseLeave } = useTiltEffect<HTMLAnchorElement>(
-    {}
+    { hoverLift: 4 }
   );
 
   const statusDot =
@@ -21,7 +21,7 @@ export default function DossierCard({ project }: { project: Project }) {
       rel="noopener noreferrer"
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
-      className="flex flex-col bg-surface border border-border rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:border-accent/20"
+      className="flex flex-col bg-surface border border-border rounded-xl overflow-hidden transition-all duration-300 hover:shadow-md hover:border-accent/20"
     >
       <div className={`h-0.5 w-full ${accentBar}`} />
 

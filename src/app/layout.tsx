@@ -3,6 +3,7 @@ import Nav from "@/components/nav";
 import Footer from "@/components/footer";
 import PageTransition from "@/components/page-transition";
 import AmbientBg from "@/components/ambient-bg";
+import SmoothScroll from "@/components/lenis";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -25,9 +26,11 @@ export default function RootLayout({
       <body className="h-full bg-bg text-text-primary antialiased">
         <AmbientBg />
         <Nav />
-        <PageTransition>
-          <main className="pt-14">{children}</main>
-        </PageTransition>
+        <SmoothScroll>
+          <PageTransition>
+            <main className="pt-14">{children}</main>
+          </PageTransition>
+        </SmoothScroll>
         <Footer />
       </body>
     </html>

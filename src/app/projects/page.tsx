@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import { projects } from "@/data/projects";
 import DossierCard from "@/components/projects/dossier-card";
+
+export const metadata: Metadata = {
+  title: "工程档案",
+  description:
+    "每个项目都是一个可成长的工程资产，不是一次性 Demo。昇腾 Atlas 900、车载中控、Java 全栈、AI/ML 项目档案。",
+};
 
 export default function ProjectsPage() {
   return (

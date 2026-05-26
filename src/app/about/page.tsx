@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import Timeline from "@/components/about/timeline";
 import Principles from "@/components/about/principles";
+
+export const metadata: Metadata = {
+  title: "关于",
+  description:
+    "计算机科学本科。从 Linux 系统管理到 AI Native 开发——基础设施 → 嵌入式 → 全栈 → AI Workflow 的技术路线。",
+};
 
 export default function AboutPage() {
   return (

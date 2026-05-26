@@ -6,8 +6,13 @@ import AmbientBg from "@/components/ambient-bg";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Daniel | AI Native",
-  description: "AI Native 数字空间",
+  title: {
+    default: "Daniel | AI Native Engineer",
+    template: "%s | Daniel",
+  },
+  description:
+    "AI Native 技术作品集。从 Linux 运维到昇腾 Atlas 900，从车载中控到 AI Workflow——系统工程的确定性 × AI 开发的想象力。",
+  keywords: ["AI Native", "Portfolio", "Infrastructure", "Embedded", "Full Stack"],
 };
 
 export default function RootLayout({

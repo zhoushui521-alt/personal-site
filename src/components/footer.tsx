@@ -1,7 +1,6 @@
 const channels = [
-  { label: "GitHub", href: "https://github.com" },
-  { label: "Email", href: "mailto:hello@example.com" },
-  { label: "Twitter", href: "https://twitter.com" },
+  { label: "GitHub", href: "https://github.com/zhoushui521-alt" },
+  { label: "Email", href: "mailto:zhoushui521@gmail.com" },
 ];
 
 export default function Footer() {

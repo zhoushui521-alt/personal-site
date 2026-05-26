@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import SkillsGraph from "@/components/skills/skills-graph";
+
+export const metadata: Metadata = {
+  title: "技能图谱",
+  description:
+    "AI Native 技术栈：React, Next.js, TypeScript, Docker, Linux, Java/Spring Boot。每一条曲线连接着相互关联的技能。",
+};
 
 export default function SkillsPage() {
   return (

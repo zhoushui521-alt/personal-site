@@ -10,8 +10,8 @@ export default function ProjectsPage() {
       </p>
 
       <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {projects.map((p) => (
-          <DossierCard key={p.id} project={p} />
+        {projects.map((p, i) => (
+          <DossierCard key={p.id} project={p} index={i} />
         ))}
       </div>
     </div>

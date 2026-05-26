@@ -8,12 +8,13 @@ export default function AboutPage() {
 
       <div className="mt-6 space-y-4 text-sm leading-relaxed text-text-secondary">
         <p>
-          一名 AI Coding 学习者，正在探索"与 AI 一起写代码"的新工作方式。
-          相信 AI 不是替代开发者，而是放大每个人的创造力。
+          计算机科学本科。从 Linux 系统管理起步，经历了华为昇腾 Atlas 900
+          训练集群测试、车载中控系统开发、Java 全栈项目交付，正在将基础设施工程能力
+          迁移到 AI Native 开发范式。
         </p>
         <p>
-          目前专注于前端开发和 AI 辅助编程，目标是用 AI
-          构建出简洁、优雅、可维护的产品。
+          当前方向：AI Workflow 系统设计、ComfyUI 工作流、本地模型部署与微调。
+          目标不是"学会用 AI"，而是建立一套可复用的 AI 工程方法论。
         </p>
       </div>
 

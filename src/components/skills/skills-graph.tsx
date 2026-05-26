@@ -10,25 +10,25 @@ const nodes: Node[] = [
   { id: "react", label: "React", x: 200, y: 160, r: 16 },
   { id: "next", label: "Next.js", x: 560, y: 140, r: 16 },
   { id: "ts", label: "TypeScript", x: 600, y: 340, r: 16 },
-  { id: "three", label: "Three.js", x: 540, y: 500, r: 16 },
+  { id: "docker", label: "Docker", x: 540, y: 500, r: 16 },
   { id: "tailwind", label: "Tailwind", x: 180, y: 420, r: 16 },
   { id: "linux", label: "Linux/Ops", x: 100, y: 300, r: 16 },
-  { id: "node", label: "Node.js", x: 300, y: 520, r: 16 },
+  { id: "java", label: "Java/Spring", x: 300, y: 520, r: 16 },
 ];
 
 const edges: Edge[] = [
   { from: "ai", to: "react" },
   { from: "ai", to: "next" },
   { from: "ai", to: "ts" },
-  { from: "ai", to: "three" },
+  { from: "ai", to: "docker" },
   { from: "ai", to: "tailwind" },
   { from: "ai", to: "linux" },
-  { from: "ai", to: "node" },
+  { from: "ai", to: "java" },
   { from: "react", to: "next" },
   { from: "react", to: "ts" },
   { from: "next", to: "ts" },
-  { from: "three", to: "react" },
-  { from: "node", to: "linux" },
+  { from: "docker", to: "linux" },
+  { from: "java", to: "docker" },
 ];
 
 const PARTICLES = 30;
@@ -76,7 +76,7 @@ export default function SkillsGraph() {
       ctx.clearRect(0, 0, w, h);
 
       // 边
-      ctx.strokeStyle = "rgba(30, 30, 36, 0.6)";
+      ctx.strokeStyle = "rgba(180, 180, 190, 0.5)";
       ctx.lineWidth = 1;
       for (const e of edges) {
         const a = nodeMap.get(e.from)!;
@@ -96,7 +96,7 @@ export default function SkillsGraph() {
         const b = nodeMap.get(edge.to)!;
         const pt = quadraticBezier(a, b, p.t);
 
-        ctx.fillStyle = "rgba(0, 229, 255, 0.8)";
+        ctx.fillStyle = "rgba(232, 96, 42, 0.7)";
         ctx.beginPath();
         ctx.arc(pt.x, pt.y, p.size, 0, Math.PI * 2);
         ctx.fill();
@@ -109,13 +109,13 @@ export default function SkillsGraph() {
       for (const n of nodes) {
         ctx.beginPath();
         ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
-        ctx.fillStyle = "#111116";
+        ctx.fillStyle = "#FFFFFF";
         ctx.fill();
-        ctx.strokeStyle = "#00E5FF";
+        ctx.strokeStyle = "#E8602A";
         ctx.lineWidth = 1.5;
         ctx.stroke();
 
-        ctx.fillStyle = "#ECECEC";
+        ctx.fillStyle = "#1A1A1C";
         ctx.font = "11px -apple-system, sans-serif";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";

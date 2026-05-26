@@ -11,9 +11,9 @@ export default function Principles() {
       {principles.map((p) => (
         <div
           key={p.label}
-          className="p-4 rounded-xl bg-surface border border-border"
+          className="p-4 rounded-xl bg-surface border border-border transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:border-accent/15"
         >
-          <span className="text-sm font-medium text-cyan">{p.label}</span>
+          <span className="text-sm font-medium text-accent">{p.label}</span>
           <p className="mt-1.5 text-sm text-text-secondary leading-relaxed">
             {p.desc}
           </p>

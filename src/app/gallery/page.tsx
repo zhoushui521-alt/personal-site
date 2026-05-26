@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
 import MasonryGrid from "@/components/gallery/masonry-grid";
 import Lightbox from "@/components/gallery/lightbox";
 
@@ -14,7 +15,9 @@ export default function GalleryPage() {
         像素是时间的沉淀。每一帧都是工程之外的感官存档。
       </p>
       <MasonryGrid onSelect={setSelected} />
-      {selected && <Lightbox src={selected} onClose={() => setSelected(null)} />}
+      <AnimatePresence>
+        {selected && <Lightbox src={selected} onClose={() => setSelected(null)} />}
+      </AnimatePresence>
     </div>
   );
 }

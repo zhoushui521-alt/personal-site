@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
 
 const links = [
   { href: "/", label: "Home" },
@@ -28,13 +29,20 @@ export default function Nav() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-sm transition-colors duration-200 ${
+                className={`relative text-sm transition-colors duration-200 ${
                   isActive
                     ? "text-accent"
                     : "text-text-secondary hover:text-text-primary"
                 }`}
               >
                 {link.label}
+                {isActive && (
+                  <motion.span
+                    layoutId="nav-indicator"
+                    className="absolute inset-x-0 -bottom-[2px] h-[2px] bg-accent rounded-full"
+                    transition={{ type: "spring", stiffness: 500, damping: 35 }}
+                  />
+                )}
               </Link>
             );
           })}

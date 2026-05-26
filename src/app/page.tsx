@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
 import Hero from "@/components/home/hero";
 import MasonryGrid from "@/components/gallery/masonry-grid";
 import Lightbox from "@/components/gallery/lightbox";
@@ -59,9 +60,11 @@ export default function Home() {
           <MasonryGrid onSelect={setSelected} />
         </section>
 
-        {selected && (
-          <Lightbox src={selected} onClose={() => setSelected(null)} />
-        )}
+        <AnimatePresence>
+          {selected && (
+            <Lightbox src={selected} onClose={() => setSelected(null)} />
+          )}
+        </AnimatePresence>
     </main>
   );
 }

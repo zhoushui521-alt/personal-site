@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useCallback } from "react";
+import { motion } from "framer-motion";
 
 type Props = { src: string; onClose: () => void };
 
@@ -16,16 +17,25 @@ export default function Lightbox({ src, onClose }: Props) {
   }, [handleKey]);
 
   return (
-    <div
+    <motion.div
       role="dialog"
       aria-label="照片预览"
       onClick={onClose}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
       className="fixed inset-0 z-50 flex items-center justify-center bg-bg/85 backdrop-blur-md p-4"
     >
-      <img
+      <motion.img
         src={src}
         alt=""
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.95 }}
+        transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
         className="max-w-full max-h-[90vh] rounded-lg object-contain"
+        onClick={(e) => e.stopPropagation()}
       />
       <button
         onClick={onClose}
@@ -34,6 +44,6 @@ export default function Lightbox({ src, onClose }: Props) {
       >
         ✕
       </button>
-    </div>
+    </motion.div>
   );
 }

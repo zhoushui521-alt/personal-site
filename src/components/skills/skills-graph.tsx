@@ -72,7 +72,7 @@ export default function SkillsGraph() {
       return { x, y };
     }
 
-    function draw() {
+    function draw(t: number) {
       ctx.clearRect(0, 0, w, h);
 
       // 边
@@ -105,6 +105,16 @@ export default function SkillsGraph() {
         if (p.t > 1) p.t = 0;
       }
 
+      // 中心节点脉冲光环
+      const center = nodeMap.get("ai")!;
+      const glowR = center.r + 6 + Math.sin(t * 1.5) * 5;
+      const glowAlpha = 0.12 + Math.sin(t * 1.5) * 0.06;
+      ctx.beginPath();
+      ctx.arc(center.x, center.y, glowR, 0, Math.PI * 2);
+      ctx.strokeStyle = `rgba(232, 96, 42, ${glowAlpha})`;
+      ctx.lineWidth = 2;
+      ctx.stroke();
+
       // 节点
       for (const n of nodes) {
         ctx.beginPath();
@@ -123,9 +133,11 @@ export default function SkillsGraph() {
       }
     }
 
+    let time = 0;
     let raf: number;
     function loop() {
-      draw();
+      time += 0.016;
+      draw(time);
       raf = requestAnimationFrame(loop);
     }
     loop();

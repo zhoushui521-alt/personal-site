@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { StaggerContainer, StaggerItem } from "@/components/stagger-children";
 
 const principles = [
@@ -14,12 +15,16 @@ export default function Principles() {
     <StaggerContainer className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3">
       {principles.map((p) => (
         <StaggerItem key={p.label}>
-          <div className="p-4 rounded-xl bg-surface border border-border transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:border-accent/15">
+          <motion.div
+            whileHover={{ y: -4 }}
+            transition={{ type: "spring", stiffness: 400, damping: 25 }}
+            className="p-4 rounded-xl bg-surface border border-border cursor-default hover:border-accent/15 hover:shadow-md"
+          >
             <span className="text-sm font-medium text-accent">{p.label}</span>
             <p className="mt-1.5 text-sm text-text-secondary leading-relaxed">
               {p.desc}
             </p>
-          </div>
+          </motion.div>
         </StaggerItem>
       ))}
     </StaggerContainer>

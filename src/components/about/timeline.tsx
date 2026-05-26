@@ -1,5 +1,7 @@
 "use client";
 
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import ScrollReveal from "@/components/scroll-reveal";
 
 const milestones = [
@@ -36,19 +38,32 @@ const milestones = [
 ];
 
 export default function Timeline() {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start 15%", "end 85%"],
+  });
+  const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
+
   return (
-    <div className="mt-6 space-y-0">
-      {milestones.map((m, i) => (
-        <ScrollReveal key={m.id} delay={i * 0.1} direction="left">
-          <div className="relative pl-8 pb-8 last:pb-0">
-            <div className="absolute left-[7px] top-2 w-px h-full bg-border" />
-            <div className="absolute left-0 top-2 w-3.5 h-3.5 rounded-full border-2 border-accent/40 bg-bg animate-dot-pulse" />
-            <span className="text-xs text-accent font-mono">{m.year}</span>
-            <h4 className="mt-0.5 text-sm font-medium text-text-primary">{m.label}</h4>
-            <p className="mt-1 text-sm text-text-secondary">{m.desc}</p>
-          </div>
-        </ScrollReveal>
-      ))}
+    <div ref={ref} className="relative mt-6">
+      <motion.div
+        style={{ scaleY, height: "calc(100% - 1rem)" }}
+        className="absolute left-[7px] top-2 w-px bg-accent/30 origin-top"
+      />
+
+      <div className="space-y-0">
+        {milestones.map((m, i) => (
+          <ScrollReveal key={m.id} delay={i * 0.1} direction="left">
+            <div className="relative pl-8 pb-8 last:pb-0">
+              <div className="absolute left-0 top-2 w-3.5 h-3.5 rounded-full border-2 border-accent/40 bg-bg animate-dot-pulse" />
+              <span className="text-xs text-accent font-mono">{m.year}</span>
+              <h4 className="mt-0.5 text-sm font-medium text-text-primary">{m.label}</h4>
+              <p className="mt-1 text-sm text-text-secondary">{m.desc}</p>
+            </div>
+          </ScrollReveal>
+        ))}
+      </div>
     </div>
   );
 }

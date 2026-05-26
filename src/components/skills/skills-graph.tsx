@@ -75,7 +75,6 @@ export default function SkillsGraph() {
     function draw(t: number) {
       ctx.clearRect(0, 0, w, h);
 
-      // 边
       ctx.strokeStyle = "rgba(180, 180, 190, 0.5)";
       ctx.lineWidth = 1;
       for (const e of edges) {
@@ -89,7 +88,6 @@ export default function SkillsGraph() {
         ctx.stroke();
       }
 
-      // 粒子
       for (const p of particles) {
         const edge = edges[p.edgeIdx];
         const a = nodeMap.get(edge.from)!;
@@ -105,7 +103,6 @@ export default function SkillsGraph() {
         if (p.t > 1) p.t = 0;
       }
 
-      // 中心节点脉冲光环
       const center = nodeMap.get("ai")!;
       const glowR = center.r + 6 + Math.sin(t * 1.5) * 5;
       const glowAlpha = 0.12 + Math.sin(t * 1.5) * 0.06;
@@ -115,7 +112,6 @@ export default function SkillsGraph() {
       ctx.lineWidth = 2;
       ctx.stroke();
 
-      // 节点
       for (const n of nodes) {
         ctx.beginPath();
         ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);

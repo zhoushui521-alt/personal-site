@@ -14,7 +14,7 @@ export default function Hero({ name, role, bio }: HeroProps) {
   const progress = useScrollProgress();
   const y = progress * -60;
   const [typed, setTyped] = useState("");
-  const [done, setDone] = useState(false);
+  const done = typed.length === bio.length;
 
   useEffect(() => {
     let i = 0;
@@ -23,7 +23,6 @@ export default function Hero({ name, role, bio }: HeroProps) {
         setTyped(bio.slice(0, i + 1));
         i++;
       } else {
-        setDone(true);
         clearInterval(timer);
       }
     }, 60);

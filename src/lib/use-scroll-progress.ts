@@ -8,7 +8,10 @@ export function useScrollProgress() {
   useEffect(() => {
     function update() {
       const h = document.documentElement.scrollHeight - window.innerHeight;
-      setProgress(h > 0 ? window.scrollY / h : 0);
+      const newProgress = h > 0 ? window.scrollY / h : 0;
+      setProgress((prev) =>
+        Math.abs(prev - newProgress) < 0.001 ? prev : newProgress
+      );
     }
 
     window.addEventListener("scroll", update, { passive: true });

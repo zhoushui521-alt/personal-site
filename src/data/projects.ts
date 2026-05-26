@@ -1,5 +1,6 @@
 export type Project = {
   id: string;
+  dossierId: string;
   name: string;
   stack: string[];
   status: "active" | "completed";
@@ -12,6 +13,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     id: "atlas-900",
+    dossierId: "PRJ-001",
     name: "昇腾 Atlas 900 集群运维",
     stack: ["Linux", "Prometheus", "Grafana", "Shell", "Docker"],
     status: "completed",
@@ -22,6 +24,7 @@ export const projects: Project[] = [
   },
   {
     id: "automotive",
+    dossierId: "PRJ-002",
     name: "车载中控测试系统",
     stack: ["Qt/C++", "Shell", "Linux", "嵌入式"],
     status: "completed",
@@ -32,6 +35,7 @@ export const projects: Project[] = [
   },
   {
     id: "asset-management",
+    dossierId: "PRJ-003",
     name: "实验室资产管理系统",
     stack: ["Java", "Spring Boot", "MySQL", "Docker", "Nginx"],
     status: "completed",
@@ -42,6 +46,7 @@ export const projects: Project[] = [
   },
   {
     id: "predictive-maintenance",
+    dossierId: "PRJ-004",
     name: "数据中心预测性维护",
     stack: ["Python", "Scikit-learn", "Pandas", "ML"],
     status: "completed",
@@ -52,6 +57,7 @@ export const projects: Project[] = [
   },
   {
     id: "personal-site",
+    dossierId: "PRJ-005",
     name: "AI Native Portfolio",
     stack: ["Next.js 16", "TypeScript", "Tailwind CSS 4", "Framer Motion"],
     status: "active",

@@ -11,9 +11,7 @@ export default function Timeline() {
     <div className="mt-6 space-y-0">
       {milestones.map((m, i) => (
         <div key={m.year} className="relative pl-8 pb-8 last:pb-0">
-          {/* 竖线 */}
           <div className="absolute left-[7px] top-2 w-px h-full bg-border" />
-          {/* 圆点 */}
           <div className="absolute left-0 top-2 w-3.5 h-3.5 rounded-full border-2 border-accent/40 bg-bg animate-dot-pulse" />
           <span className="text-xs text-accent font-mono">{m.year}</span>
           <h4 className="mt-0.5 text-sm font-medium text-text-primary">{m.label}</h4>

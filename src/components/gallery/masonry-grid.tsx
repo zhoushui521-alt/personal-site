@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useTiltEffect } from "@/lib/use-tilt-effect";
 
 const photos = [
   "10.png", "101.png", "102.png", "103.png",
@@ -18,25 +18,26 @@ function PhotoCard({
   photo: { id: string; src: string };
   onSelect: (src: string) => void;
 }) {
-  const ref = useRef<HTMLButtonElement>(null);
+  const { ref, onMouseMove: tiltMove, onMouseLeave: tiltLeave } =
+    useTiltEffect<HTMLButtonElement>({
+      intensity: 3,
+      extraEnter: " scale(1.015)",
+      extraLeave: " scale(1)",
+    });
 
   function handleMouseMove(e: React.MouseEvent) {
+    tiltMove(e);
     const card = ref.current!;
-    const rect = card.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
     card.style.transition = "none";
-    card.style.transform = `perspective(800px) rotateY(${x * 3}deg) rotateX(${-y * 3}deg) scale(1.015)`;
     card.style.boxShadow = "0 4px 20px rgba(0,0,0,0.06)";
     card.style.zIndex = "1";
   }
 
   function handleMouseLeave() {
+    tiltLeave();
     const card = ref.current!;
     card.style.transition =
       "transform 0.5s ease-out, box-shadow 0.5s ease-out";
-    card.style.transform =
-      "perspective(800px) rotateY(0deg) rotateX(0deg) scale(1)";
     card.style.boxShadow = "none";
     card.style.zIndex = "0";
   }

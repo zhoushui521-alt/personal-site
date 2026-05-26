@@ -1,32 +1,13 @@
 "use client";
 
-import { useRef } from "react";
+import { useTiltEffect } from "@/lib/use-tilt-effect";
 import type { Project } from "@/data/projects";
 
-export default function DossierCard({
-  project,
-  index,
-}: {
-  project: Project;
-  index: number;
-}) {
-  const cardRef = useRef<HTMLAnchorElement>(null);
+export default function DossierCard({ project }: { project: Project }) {
+  const { ref, onMouseMove, onMouseLeave } = useTiltEffect<HTMLAnchorElement>(
+    {}
+  );
 
-  function handleMouseMove(e: React.MouseEvent) {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    cardRef.current.style.transform = `perspective(800px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg)`;
-  }
-
-  function handleMouseLeave() {
-    if (!cardRef.current) return;
-    cardRef.current.style.transform =
-      "perspective(800px) rotateY(0deg) rotateX(0deg)";
-  }
-
-  const dossierId = `PRJ-${String(index + 1).padStart(3, "0")}`;
   const statusDot =
     project.status === "active" ? "bg-mint" : "bg-text-secondary";
   const accentBar =
@@ -34,12 +15,12 @@ export default function DossierCard({
 
   return (
     <a
-      ref={cardRef}
+      ref={ref}
       href={project.link}
       target="_blank"
       rel="noopener noreferrer"
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
+      onMouseMove={onMouseMove}
+      onMouseLeave={onMouseLeave}
       className="flex flex-col bg-surface border border-border rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:border-accent/20"
     >
       <div className={`h-0.5 w-full ${accentBar}`} />
@@ -47,7 +28,7 @@ export default function DossierCard({
       <div className="p-6 flex flex-col flex-1">
         <div className="flex items-center justify-between mb-3">
           <span className="text-xs text-text-secondary/50 font-mono tracking-wider">
-            {dossierId}
+            {project.dossierId}
           </span>
           <div className="flex items-center gap-2">
             <span className="text-xs text-text-secondary/50 font-mono">

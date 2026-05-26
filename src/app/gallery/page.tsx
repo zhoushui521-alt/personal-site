@@ -9,9 +9,9 @@ export default function GalleryPage() {
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-20">
-      <h2 className="text-2xl font-semibold tracking-tight">照片墙</h2>
+      <h2 className="text-2xl font-semibold tracking-tight">数字暗房</h2>
       <p className="mt-3 text-sm text-text-secondary">
-        数字空间的视觉碎片
+        像素是时间的沉淀。每一帧都是工程之外的感官存档。
       </p>
       <MasonryGrid onSelect={setSelected} />
       {selected && <Lightbox src={selected} onClose={() => setSelected(null)} />}

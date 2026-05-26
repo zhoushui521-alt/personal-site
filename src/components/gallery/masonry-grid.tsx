@@ -47,7 +47,7 @@ function PhotoCard({
       onClick={() => onSelect(photo.src)}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="w-full rounded-lg overflow-hidden cursor-pointer block relative ring-1 ring-border/50"
+      className="w-full rounded-lg overflow-hidden cursor-pointer block relative ring-1 ring-border/50 group"
     >
       <img
         src={photo.src}
@@ -55,6 +55,7 @@ function PhotoCard({
         className="w-full h-auto block"
         loading="lazy"
       />
+      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/[0.03] transition-colors duration-300" />
     </button>
   );
 }

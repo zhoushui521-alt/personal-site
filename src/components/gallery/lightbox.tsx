@@ -30,7 +30,7 @@ export default function Lightbox({ src, onClose }: Props) {
       <button
         onClick={onClose}
         aria-label="关闭预览"
-        className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center text-text-secondary text-xl rounded-full transition-colors hover:text-cyan"
+        className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center text-text-secondary text-xl rounded-full transition-colors hover:text-accent"
       >
         ✕
       </button>
